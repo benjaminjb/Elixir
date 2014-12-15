@@ -1,4 +1,4 @@
-defmodule FizzBuzz do
+defmodule Challenges do
 
   @fizz 5
   @buzz 7
