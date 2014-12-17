@@ -28,4 +28,17 @@ defmodule EtudesList do
   @spec range_find([number]) :: {number, number}
   def range_find(list), do: {minimum(list), maximum(list)}
 
+  @doc "Mean: the average"
+  @spec mean([number]) :: number
+  def mean(list), do: div(List.foldl(list, 0, fn(x, acc) -> x + acc end), Enum.count(list))
+
+  @doc "Standard deviation"
+  @spec stdv([number]) :: number
+  def stdv(list) do
+    n = Enum.count(list)
+    {sum, sum_sq} = List.foldl(list, {0,0}, fn(x, {acc, acc_sq}) ->
+      {acc + x, acc_sq + x * x} end)
+    :math.sqrt((n * sum_sq - sum * sum) / (n * (n - 1)))
+  end
+
 end
