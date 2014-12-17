@@ -1,18 +1,12 @@
 defmodule Challenges do
 
-  @fizz 5
-  @buzz 7
-
-  def fizzbuzz(n), do: _fizzbuzz(n, [])
-
-  defp _fizzbuzz(0, acc), do: acc
-
-  defp _fizzbuzz(n, acc) do
-    _fizzbuzz(n - 1, [fbresult(n) | acc])
+  def fizzbuzz(n) do
+    1..n 
+    |> Enum.map(&fbresult/1)
   end
 
   defp fbresult(n) do
-    case {rem(n, @fizz), rem(n, @buzz)} do
+    case {rem(n, 3), rem(n, 5)} do
       {0,0} -> "fizzbuzz"
       {0,_} -> "fizz"
       {_,0} -> "buzz"
